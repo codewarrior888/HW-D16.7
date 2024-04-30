@@ -1,0 +1,367 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-30 15:05+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: adsboard/filters.py:13
+msgid "Category"
+msgstr "Категория"
+
+#: adsboard/filters.py:14
+msgid "all"
+msgstr "все"
+
+#: adsboard/filters.py:17 templates/default.html:36
+#: templates/post_search.html:69 templates/usercomments.html:30
+msgid "Search"
+msgstr "Поиск"
+
+#: adsboard/filters.py:39
+msgctxt "post_time"
+msgid "Posted after"
+msgstr "Опубликован после"
+
+#: fpages/admin.py:11
+msgid "Advanced options"
+msgstr ""
+
+#: templates/account/email/base_message.txt:2
+#, python-format
+msgid "Hello from %(site_name)s!"
+msgstr "Приветствуем на %(site_name)s!"
+
+#: templates/account/email/base_message.txt:6
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: templates/account/email/email_confirmation_message.txt:11
+#, python-format
+msgid ""
+"\n"
+"\n"
+"            You received this message because the user %(user_display)s "
+"specified this email\n"
+"            during the registration on Classified Ads Portal.\n"
+"\n"
+"            To confirm your registration, please follow the link below and "
+"enter your %(otp)s verification code.\n"
+"            Link: http://127.0.0.1:8000/%(site.url)s\n"
+"\n"
+"            Have a great day!\n"
+"\n"
+"            You received this message because the user %(user_display)s "
+"specified this email\n"
+"            during registration on %(site_domain)s.\n"
+"\n"
+"            To confirm your registration, please follow the link: "
+"%(activate_url)s\n"
+"\n"
+"            Have a great day!\n"
+"            \n"
+"        "
+msgstr ""
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Confirm E-mail Address"
+msgstr "Подтвердите электронную почту"
+
+#: templates/account/email_verification.html:7
+#: templates/account/email_verification.html:11
+msgid "Email Verification"
+msgstr "Подтвердите электронную почту"
+
+#: templates/account/email_verification.html:15
+msgid "Enter the verification code sent to your email"
+msgstr "Введите код подтверждения из электронной почты"
+
+#: templates/account/email_verification.html:19
+msgid "Verification Code"
+msgstr "Код подтверждения"
+
+#: templates/account/email_verification.html:22
+msgid "Submit"
+msgstr "Сохранить"
+
+#: templates/account/email_verification.html:32
+msgid "Your email has been successfully verified."
+msgstr "Ваша электронная почта была успешно подтверждена."
+
+#: templates/account/email_verification.html:40
+msgid "Invalid verification code. Please try again."
+msgstr "Неправильный код. Попробуйте снова."
+
+#: templates/account/logout.html:15
+msgid "Are you sure you want to log out?"
+msgstr "Вы действительно хотите выйте?"
+
+#: templates/account/logout.html:16
+msgid "Log Out"
+msgstr "Выход"
+
+#: templates/account/successful_verification.html:7
+#: templates/account/successful_verification.html:14
+msgid "Successful Verification"
+msgstr "Успешная проверка"
+
+#: templates/account/successful_verification.html:15
+msgid "Thank you for verifying your email address."
+msgstr "Спасибо за подтверждение электронной почты."
+
+#: templates/account/successful_verification.html:16
+msgid "Now you can"
+msgstr "Теперь вы можете"
+
+#: templates/account/successful_verification.html:16
+msgid "log in"
+msgstr "войти"
+
+#: templates/account/verification_failed.html:7
+msgid "Verification failed"
+msgstr "Проверка не удалась"
+
+#: templates/account/verification_failed.html:11
+msgid "Wrong verification code"
+msgstr "Неправильный код подтверждения"
+
+#: templates/account/verification_failed.html:15
+msgid ""
+"Sorry, the code you entered does not match. Please try to sign up again."
+msgstr "Извините, введеный Вами код не совпадает. Попробуйте снова."
+
+#: templates/commentapproval.html:14
+msgid "Comments awaiting approval"
+msgstr "Комментарии для проверки"
+
+#: templates/commentapproval.html:27 templates/post_detail.html:87
+msgid "Back to Posts"
+msgstr "Обратно к объявлениям"
+
+#: templates/createcomment.html:8
+msgid "Write your comment:"
+msgstr "Оставить комментарий"
+
+#: templates/createcomment.html:12 templates/post_detail.html:41
+msgid "Send"
+msgstr "Отправить"
+
+#: templates/default.html:9 templates/default.html:19
+msgid "Classified Ads Portal"
+msgstr "Портал Объявлений"
+
+#: templates/default.html:32
+msgid "Posts"
+msgstr "Объявления"
+
+#: templates/default.html:43 templates/mypost_list.html:44
+msgid "Create a post"
+msgstr "Написать статью"
+
+#: templates/default.html:55
+msgid "Sign Out"
+msgstr "Выйти"
+
+#: templates/default.html:58
+msgid "My Account"
+msgstr "Мой аккаунт"
+
+#: templates/default.html:66 templates/home.html:32
+#: templates/registration/login.html:7 templates/registration/login.html:16
+#: templates/registration/login.html:27
+msgid "Sign In"
+msgstr "Войти"
+
+#: templates/default.html:69 templates/home.html:33
+#: templates/registration/login.html:29 templates/registration/signup.html:7
+#: templates/registration/signup.html:17 templates/registration/signup.html:38
+msgid "Sign Up"
+msgstr "Создать аккаунт"
+
+#: templates/default.html:89
+msgid "Set"
+msgstr "OK"
+
+#: templates/home.html:7
+msgid "Home"
+msgstr "Домашняя страница"
+
+#: templates/home.html:21 templates/home.html:28
+msgid "Welcome to Fan MMORPG"
+msgstr "Добро пожаловать в фанатский MMORPG"
+
+#: templates/home.html:22 templates/home.html:29
+msgid "Classified Ads Portal!"
+msgstr "Портал Объявлений"
+
+#: templates/home.html:30
+msgid "Please sign in or sign up to continue."
+msgstr "Авторизуйтесь или создайте новый аккаунт."
+
+#: templates/mypost_detail.html:44 templates/post_detail.html:85
+msgid "Back to My Posts"
+msgstr "Обратно в моим объявлениям"
+
+#: templates/mypost_detail.html:48
+msgid "Back"
+msgstr "Назад"
+
+#: templates/mypost_list.html:8 templates/mypost_list.html:13
+#: templates/mypost_list.html:19
+msgid "My Posts"
+msgstr "Мои Объявления"
+
+#: templates/mypost_list.html:19
+msgid "Total:"
+msgstr "Всего:"
+
+#: templates/mypost_list.html:40
+msgid "No posts yet."
+msgstr "Объявлений нет."
+
+#: templates/pagination.html:7
+msgid "First"
+msgstr "Первая"
+
+#: templates/pagination.html:8
+msgid "Previous"
+msgstr "Назад"
+
+#: templates/pagination.html:12
+msgid "Next"
+msgstr "Вперед"
+
+#: templates/pagination.html:13
+msgid "Last"
+msgstr "Последняя"
+
+#: templates/post_create.html:8 templates/post_create.html:15
+msgid "Create post"
+msgstr "Написать новость"
+
+#: templates/post_create.html:32 templates/post_edit.html:32
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/post_create.html:33 templates/post_delete.html:25
+#: templates/post_edit.html:33
+msgid "Cancel"
+msgstr "Отменить"
+
+#: templates/post_delete.html:8 templates/post_delete.html:15
+msgid "Delete post"
+msgstr "Удалить объявление"
+
+#: templates/post_delete.html:19
+msgid "Are you sure you want to delete?"
+msgstr "Вы действительно хотите удалить?"
+
+#: templates/post_delete.html:24
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/post_detail.html:46
+msgid "You need to be"
+msgstr "Вы должны быть"
+
+#: templates/post_detail.html:46
+msgid "logged in"
+msgstr "авторизованы"
+
+#: templates/post_detail.html:46
+msgid "to see or leave comments"
+msgstr "Оставить комментарий"
+
+#: templates/post_detail.html:59 templates/post_detail.html:76
+msgid "No comments yet"
+msgstr "Комментарий нет"
+
+#: templates/post_detail.html:62
+msgid "You are not authorized to see comments of other users"
+msgstr "У вас нет доступа для просмотра комментарий других пользователей"
+
+#: templates/post_detail.html:83
+msgid "Back to Search"
+msgstr "Назад в Поиск"
+
+#: templates/post_detail.html:89
+msgid "Back to Home"
+msgstr "На Главную"
+
+#: templates/post_edit.html:8 templates/post_edit.html:16
+msgid "Edit a post"
+msgstr "Отредактировать"
+
+#: templates/post_list.html:9 templates/post_list.html:14
+msgid "All posts"
+msgstr "Все Объявления"
+
+#: templates/post_search.html:9
+msgid "Post Search"
+msgstr "Поиск Объявлений"
+
+#: templates/post_search.html:83
+msgid "Posted"
+msgstr "Время публикации"
+
+#: templates/post_search.html:83
+msgid "in"
+msgstr "в"
+
+#: templates/registration/login.html:20 templates/registration/signup.html:22
+msgid "Username"
+msgstr "Ник"
+
+#: templates/registration/login.html:24 templates/registration/signup.html:30
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/registration/signup.html:26
+msgid "Email"
+msgstr "Электронная почта"
+
+#: templates/registration/signup.html:34
+msgid "Confirm password"
+msgstr "Подтвердить пароль"
+
+#: templates/registration/signup.html:40
+msgid "Already have an account?"
+msgstr "Уже зарегистрированы?"
+
+#: templates/registration/signup.html:40
+msgid "Log In"
+msgstr "Войти"
+
+#: templates/usercomments.html:8
+msgid "User Comments to My Posts"
+msgstr "Комментарии пользователей к Моим Объявлениям"
+
+#: templates/usercomments.html:15
+msgid "User Comments for Approval"
+msgstr "Комментарии пользователей для подтверждения"
+
+#: templates/usercomments.html:49
+msgid "Accept"
+msgstr "Подтвердить"
+
+#: templates/usercomments.html:51
+msgid "Reject"
+msgstr "Отклонить"
