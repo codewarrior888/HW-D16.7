@@ -1,0 +1,65 @@
+{% extends 'default.html' %}
+
+{% load static %}
+{% load custom_filters %}
+{% load i18n %}
+
+{% block title %}
+{% trans "User Comments to My Posts" %}
+{% endblock title %}
+
+{% block content %}
+
+<div class="form-group" style="margin-bottom: 25px; width: 700px; margin-left: 25px">
+    <p>&nbsp</p>
+    <h3 align="left" style="color: #000000"><b>{% trans 'User Comments for Approval' %}</b></h3>
+    <hr>
+
+    {% if usercomments %}
+    <div align="center" class="form-group" style="margin-bottom: 25px;">
+
+        <form action="" method="get" style="width: 800px; text-align: left;">
+            <style>
+                label { font-weight: bold } 
+                input { margin-bottom: 15px }
+            </style>
+
+           {{ filterset.form.as_p }}
+
+            <div align="left" style="margin-top:15px; margin-bottom: 15px">
+                <input type="submit" value="{% trans 'Search' %}" class="btn btn-primary"/>
+            </div>
+       </form>
+    <hr>
+    </div>
+
+    <table style="margin-right: auto; margin-right: auto;">
+        {% for comment in usercomments %}
+            <td style="text-align: justify">
+            <!-- <a href="http://127.0.0.1:8000/post/{{ comment.post.id }}" style="text-decoration: none; color: #778899;">{{ comment.post.title }}</a> -->
+            <p style="text-align: justify"><b>Comment by: </b>{{ comment.author }}
+            | {{ comment.post_time|format_time }}
+            <br>
+                <i><b>Content: </b><a href="http://127.0.0.1:8000/posts/{{ comment.post.id }}" style="text-decoration: none; color: #778899;">{{ comment.content }}</a></i></p>
+            
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" value='{{ comment.id }}' name="comment">
+                {% if not comment.status %}
+                    <input type="submit" value="{% trans 'Accept' %}" class="btn btn-success"/>
+                {% else %}
+                    <input type="submit" value="{% trans 'Reject' %}" class="btn btn-danger"/>
+                {% endif %}
+            </form>
+        {% endfor %}
+    </table>
+{% else %}
+<h3>No comments</h3>
+
+{% endif %}
+
+{% if usercomments %}
+{% include 'pagination.html' %}
+{% endif %}
+
+{% endblock content %}

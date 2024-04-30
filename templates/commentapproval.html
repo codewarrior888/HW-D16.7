@@ -1,0 +1,29 @@
+{% extends 'default.html' %}
+
+{% load i18n %}
+
+{% block title %}
+    Posts
+{% endblock title %}
+
+{% block content %}
+
+<div style="display: flex">
+    <div style="flex-basis: 90%">
+        <br>
+        <h4>{%trans "Comments awaiting approval" %}</h4>
+        <br>
+        {% for comment in comments reversed %}
+            {% if not comment.status %}
+                {% if comment.author == request.user %}
+                <h6 style="text-align: left" >Your comment <b>"{{ comment.content }}"</b> was sent for approval to <b>{{ comment.post.author}}.</b></h6>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% if 'posts' in request.path %}
+<p align="center"><a href="{% url 'post_list' %}" class="btn btn-secondary" style="margin-top:10px; align:center">&#8592 {%trans "Back to Posts" %}</a></p>
+{% endif %}
+{% endblock content %}

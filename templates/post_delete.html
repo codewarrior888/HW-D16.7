@@ -1,0 +1,31 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+{% load i18n %}
+
+{% block title %}
+{% trans 'Delete post' %}
+{% endblock title  %}
+
+{% block content %}
+
+<div class="form-group" style="margin-bottom: 25px; width: 800px; margin-left: 25px">
+    <p>&nbsp</p>
+    <h2 align="center" style="color: #000000"><b>{% trans 'Delete post' %}</b></h2>
+<hr>
+<div align="center" class="form-group" style="margin-bottom: 25px">
+    <form action="" method="post" style="width: 700px">
+        <h4 align="center" style="color: #000000"><b>{% trans 'Are you sure you want to delete?' %}</h4></b><h6></h6><i style="color: #0b1ef5"> {{ object.title }} </i> </h6>
+        {% csrf_token %}
+        <br>
+        <br>
+        <div align="center" style="margin-top:15px; margin-bottom: 15px">
+            <input type="submit" value="{% trans 'Delete' %}" class="btn btn-outline-danger"/>
+            <a href="{% url 'post_detail' object.id%}" class="btn btn-success">{% trans 'Cancel' %}</a>
+        </div>
+        <br><br>
+    </form>
+</div>
+
+{% endblock content %}

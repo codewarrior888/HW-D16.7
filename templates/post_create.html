@@ -1,0 +1,40 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+{% load i18n %}
+
+{% block title %}
+{%trans 'Create post' %}
+{% endblock title  %}
+
+{% block content %}
+
+<div class="form-group" style="margin-bottom: 25px; width: 700px; margin-left: 25px">
+    <p>&nbsp</p>
+    <h2 align="center" style="color: #000000"><b>{% trans 'Create post' %}</b></h2>
+
+    <div class="form-group" style="margin-bottom: 25px">
+        <form action="" method="post" style="width: 800px">
+            <style>
+                .error { color: red }
+                .errorlist li { color: red }
+                label { font-weight: bold }
+                input { margin-bottom: 15px }
+            </style>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.media }}
+            {{ form.as_table }}
+            <p>&nbsp</p>
+            
+            <div align="left" style="margin-top:15px; margin-bottom: 15px">
+                <input type="submit" value="{% trans 'Save' %}" class="btn btn-primary"/>
+                <a href="{% url 'post_list' %}" class="btn btn-outline-danger">{% trans 'Cancel' %}</a>
+            </div>
+        </form>
+    <hr>
+    </div>
+</div>
+
+{% endblock content %}

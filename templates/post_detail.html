@@ -1,0 +1,94 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+{% load i18n %}
+
+{% block title %}
+{{ post.title|censor }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="form-group" style="margin-bottom: 25px; width: 700px; margin-left: 25px">
+  <p>&nbsp</p>
+  <h2>{{ OnePost.title|censor }}</h2>
+  <p class="card-text"><small class="text-muted">{{ OnePost.post_time|format_time }} by {{ OnePost.author }}
+    {% if OnePost.author.username == user.username %}
+      <a href="{% url 'post_edit' OnePost.id %}">Edit post /</a>
+      <a href="{% url 'post_delete' OnePost.id %}">Delete post</a>
+    {% endif %}
+  </small></p>
+  <p>{{ OnePost.content|censor|safe }}</p>
+</div>
+
+<p>&nbsp</p>
+<hr>
+
+<div class="form-group" style="margin-bottom: 25px; width: 700px; margin-left: 25px">
+  <h4>Comment{{ comments.count|pluralize }} ( {{ comments.count }} )</h4>
+  <br>
+  {% if user.is_authenticated %} 
+      {% if OnePost.author.username != user.username %}
+      <div style="text-align: left">
+        <form action="" method="post" style="width: 700px">
+            <style>
+                label {font-weight:bold}
+            </style>
+            {% csrf_token %}
+            {{ comment_form.as_table }}
+            <br>
+            <input class="btn btn-primary" type="submit" value="{% trans 'Send' %}">
+        </form>
+      </div>
+      {% endif %}
+  {% else %}
+  <p>{% trans "You need to be" %} <a href='/accounts/login/'>{% trans "logged in" %}</a> {% trans "to see or leave comments" %}</p>
+  {% endif %}
+
+  {% if user.username == OnePost.author.username %}
+      {% if comments %}
+            {% for comment in comments %}
+                      <tr>
+                      <td><b><i>{{ comment.author__username }}</i></b></td>
+                      <td><b><i>| {{ comment.post_time|format_time }} </i></b></td>
+                      <td><b><i>| {{ comment.status }}</i></b></td>
+                              <p>{{ comment.content }}</p>
+            {% endfor %}
+      {% else %}
+      <p>{% trans "No comments yet" %}</p>
+      {% endif %}
+  {% else %}
+  <p>{% trans "You are not authorized to see comments of other users" %}</p>
+  {% endif %}
+      
+  <!-- {% if user.username != OnePost.author.username %} # Если комментарии всех пользователей открыты для всех
+      {% if comments %}
+        {% for comment in comments %}
+                  {% if comment.status %}
+                    <tr>
+                    <td><b><i>{{ comment.author__username }}</i></b></td>
+                    <td><b><i>| {{ comment.post_time|format_time }} </i></b></td>
+                            <p>{{ comment.content }}</p>
+                  {% endif %}
+        {% endfor %}
+      {% else %}
+      <p>{% trans "No comments yet" %}</p>
+      {% endif %}
+  {% endif %} -->
+     
+  <br>
+
+  {% if 'search' in request.path %}
+  <p align="center"><a href="{% url 'post_search' %}" class="btn btn-secondary" style="margin-top:10px; align:center">&#8592 {% trans "Back to Search" %}</a></p>
+  {% elif 'myposts' in request.path %}
+  <p align="center"><a href="{% url 'mypost_list' %}" class="btn btn-secondary" style="margin-top:10px; align:center">&#8592 {% trans "Back to My Posts" %}</a></p>
+  {% elif 'posts' in request.path %}
+  <p align="center"><a href="{% url 'post_list' %}" class="btn btn-secondary" style="margin-top:10px; align:center">&#8592 {%trans "Back to Posts" %}</a></p>
+  {% else %}
+  <p align="center"><a href="{% url 'home' %}" class="btn btn-secondary" style="margin-top:10px; align:center">&#8592 {% trans "Back to Home" %}</a></p>
+  {%endif%}
+
+</div>
+
+{% endblock content %}

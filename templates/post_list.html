@@ -1,0 +1,33 @@
+{% extends 'default.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load custom_tags %}
+{% load custom_filters %}
+
+{% block title %}
+{% trans "All posts" %}
+{% endblock title %}
+
+
+{% block content %}
+<h1><b>{% trans "All posts" %}</b></h1>
+
+{% for post in posts %}
+<div class="card">
+  {% for category in post.category.all %}  
+  <h6 class="card-header"><em>Category: {{ category }}</em></h6>
+  {% endfor %}
+  <div class="card-body">
+    <h4 class="card-title">{{ post.title|censor|safe }}</h4>
+    <p class="card-text">{{ post.preview|censor|safe }}</p>
+    <p class="card-text"><small class="text-muted">{{ post.post_time|format_time }} by {{ post.author }}</small></p>
+    <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Read more</a>
+  </div>
+</div>
+
+{% endfor %}
+<p>&nbsp</p>
+{% include 'pagination.html' %}
+
+{% endblock content %}

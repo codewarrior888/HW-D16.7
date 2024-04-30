@@ -1,0 +1,20 @@
+{% extends "default.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Successful Verification" %}
+{% endblock title  %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">{% trans "Successful Verification" %}</h2>
+        <p>{% trans "Thank you for verifying your email address." %}</p>
+        <p>{% trans "Now you can" %} <a href="{% url 'login' %}">{% trans "log in" %}</a></p>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

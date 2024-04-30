@@ -1,0 +1,30 @@
+{% extends "account/email/base_message.txt" %}
+{% load account %}
+{% load i18n %}
+{% load custom_tags %}%
+
+{% block content %}
+    {% user_display user as user_display %}
+    {% autoescape off %}
+    {% code_gen as otp %}
+    {% url_address as site %}
+        {% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+
+            You received this message because the user {{ user_display }} specified this email
+            during the registration on Classified Ads Portal.
+
+            To confirm your registration, please follow the link below and enter your {{ otp }} verification code.
+            Link: http://127.0.0.1:8000/{{ site.url }}
+
+            Have a great day!
+
+            You received this message because the user {{ user_display }} specified this email
+            during registration on {{ site_domain }}.
+
+            To confirm your registration, please follow the link: {{ activate_url }}
+
+            Have a great day!
+            
+        {% endblocktrans %}
+    {% endautoescape %}
+{% endblock %}

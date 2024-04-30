@@ -1,0 +1,18 @@
+{% extends 'default.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Verification failed" %}
+{% endblock title  %}
+
+{% block content %}
+    <h2 align="left" style="color: #333333"><b>{% trans "Wrong verification code" %}</b></h2>
+    <hr>
+    <div align="center" class="form-group" style="margin-bottom: 25px">
+        <br>
+        <h3>{% trans "Sorry, the code you entered does not match. Please try to sign up again." %}</h3>
+        <br>
+    </div>
+{% endblock %}

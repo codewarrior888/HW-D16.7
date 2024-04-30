@@ -1,0 +1,51 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+{% load i18n %}
+
+{% block title %}
+{{ post.title|censor }}
+{% endblock title %}
+
+{% block content %}
+<h1>{{ post.title|censor }}</h1>
+<p class="card-text"><small class="text-muted">{{ post.post_time|format_time }} by {{ post.author }}
+{% if user.is_authenticated and user == post.author %}
+  <a href="{% url 'post_edit' post.id %}">Edit post /</a>
+  <a href="{% url 'post_delete' post.id %}">Delete post</a>
+{% endif %}
+</small></p>
+<p>{{ post.content|censor|safe }}</p>
+
+<hr>
+<h4>Comment{{ comments.count|pluralize }} ({{ comments.count }})</h4>
+  {% for comment in comments reversed %}
+    {% if comment.status %}
+    <tr class="card-text">
+        <td><i>{{ comment.author }} </i></td>
+        <td><i>| {{ comment.post_time|format_time }} </i></td>
+        {% if comment.author == request.user %}
+                <i>| <a href="{% url 'comment_delete' comment.pk %}">Delete</a></i>
+        {% endif %}
+        <br>
+        <td>{{ comment.content }}</td><br>
+
+        <br><br>
+    </tr>
+    {% endif %}
+  {% endfor %}
+
+{% else %}
+  No comments yet
+{% endif %}
+
+{% if 'myposts' in request.path %}
+<p align="center"><a href="myposts/" class="btn btn-secondary" style="margin-top:10px; align:center">&#8592 {% trans "Back to My Posts" %}</a></p>
+{%endif%}
+
+{% if request.META.HTTP_REFERER %}
+<p align="center"><a href="{{request.META.HTTP_REFERER}}" class="btn btn-secondary" style="margin-top:10px; align:center">&#8592 {% trans "Back" %}</a></p>
+{% endif %}
+
+{% endblock content %}

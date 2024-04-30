@@ -1,0 +1,93 @@
+{% extends 'default.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load custom_tags %}
+{% load custom_filters %}
+
+{% block title %}
+{% trans 'Post Search' %}
+{% endblock title %}
+
+{% block content %}
+
+
+<style>
+    .search-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px;
+    }
+
+    .search-form label {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    .search-form input, .search-form select {
+        margin-right: 10px;
+        padding: 5px;
+    }
+
+    .search-result {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 20px;
+    }
+
+    .search-result .card {
+        width: 30%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 5px gray;
+    }
+
+    .search-result .card a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .search-result .card a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<h1 align="left" style="color: #333333"><b>Поиск объявлений</b></h1>
+<hr>
+
+<form action="" method="get" class="search-form">
+    {{ filterset.form.non_field_errors }}
+    {% for field in filterset.form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+    {% endfor %}
+    <div align="center" style="margin-top:15px; margin-bottom: 15px">
+        <input type="submit" class="btn btn-primary" value="{% trans 'Search' %}"/>
+    </div>
+    
+</form>
+
+{% if Post_search %}
+
+    <hr>
+    <div class="search-result">
+        {% for post in Post_search %}
+            <div class="card" style="display: inline-block; height: 120px; width: 1000px; margin: 10px; padding: 20px">
+                <a href="{% url 'post_detail_search' post.id %}"><h3>{{ post.title|censor }}</h3></a>
+                {% for post_category in post.postcategory_set.all %}
+                <p class="card-text"><small class="text-muted">{% trans 'Posted' %} by <b>{{ post.author }}</b> {% trans 'in' %} <b>"{{ post_category.category.name }}"</b>.</small></p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <h2><b>К сожалению, по Вашему запросу ничего не найдено :(</b></h2>
+{% endif %}
+<p>&nbsp</p>
+{% include 'pagination.html' %}
+
+{% endblock content %}
